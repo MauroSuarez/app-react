@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 import { Menu, Button } from 'antd';
 import options from "./options";
+import './styles.css';
 
 const stripTrailingSlash = str => {
   if (str.substr(-1) === '/') {
@@ -19,15 +20,15 @@ class MenuBar extends React.Component {
   }
 
   getMenuItem = ({ singleOption }) => {
-    const { key, label, leftIcon, children } = singleOption;
+    const { id, key, label, leftIcon, children } = singleOption;
     const url = stripTrailingSlash(this.props.url);
     console.log(this.props);
     return (
-      <Menu.Item key={key}>
+      <Menu.Item key={id}>
         {
           key !== 'close'
             ? <Link to={`${url}/${key}`}>{label}</Link>
-            : <Button onClick={() => [ this.props.signOut(), localStorage.clear() ] }>Salir</Button>
+            : <Button className="logout" onClick={() => [ this.props.signOut(), localStorage.clear() ] }>Salir</Button>
         }
       </Menu.Item>
     );
@@ -35,7 +36,7 @@ class MenuBar extends React.Component {
 
   render() {
     return (
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
         {options.map(singleOption => this.getMenuItem({ singleOption }))}
       </Menu>
     );

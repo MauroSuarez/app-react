@@ -4,6 +4,10 @@ import asyncComponent from "../../utils/asyncFunc";
 
 const routes = [
   {
+    path: "",
+    component: asyncComponent(() => import("../cars/index"))
+  },
+  {
       path: "car",
       component: asyncComponent(() => import("../cars/index"))
   },
@@ -12,6 +16,7 @@ const routes = [
 class AppRouter extends Component {
   render() {
     const { url, style } = this.props;
+    console.log(url);
     return (
       <div style={style}>
         {routes.map(singleRoute => {
