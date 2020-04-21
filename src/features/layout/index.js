@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Layout, Breadcrumb, } from 'antd';
+import * as LoginActions from "../login/actions";
+import { Layout, Button } from 'antd';
 import HeaderBar from './components/header';
 import MenuBar from './components/menu';
 import FooterBar from './components/footer';
@@ -14,11 +15,11 @@ const { Content } = Layout;
 class WebApp extends React.Component {
   render() {
     const { url } = this.props.match;
+    const { loginActions } = this.props;
     return (
       <Layout className="layout">
         <HeaderBar>
-          <div className="logo" />
-          <MenuBar url={url} />
+          <MenuBar url={url} {...loginActions} />
         </HeaderBar>
         <Content style={{ padding: '0 50px' }}>
           <BreadcrumbBar />
@@ -41,7 +42,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-
+    loginActions: bindActionCreators({ ...LoginActions.Actions }, dispatch),
   };
 }
 

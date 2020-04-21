@@ -5,8 +5,7 @@ import carSaga from "../features/cars/sagas";
 
 export default function* rootSaga(getState) {
     yield all([
-      loginSaga(),
-      carSaga(),
+      loginSaga()
     ]);
   }
   

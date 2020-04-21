@@ -15,8 +15,8 @@ const options = [
       leftIcon: 'car',
     },
     {
-      key: 'license',
-      label: 'Licencia',
+      key: 'close',
+      label: 'Salir',
       leftIcon: 'idcard',
     }
 ]
