@@ -5,7 +5,9 @@ import { Layout, Breadcrumb, } from 'antd';
 import HeaderBar from './components/header';
 import MenuBar from './components/menu';
 import FooterBar from './components/footer';
+import BreadcrumbBar from './components/breadcrumb';
 import AppRouter from './AppRouter';
+import './styles.css';
 
 const { Content } = Layout;
 
@@ -13,17 +15,13 @@ class WebApp extends React.Component {
   render() {
     const { url } = this.props.match;
     return (
-      <Layout>
+      <Layout className="layout">
         <HeaderBar>
           <div className="logo" />
           <MenuBar url={url} />
         </HeaderBar>
         <Content style={{ padding: '0 50px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
+          <BreadcrumbBar />
           <div className="site-layout-content">
            <AppRouter url={url} />
           </div>

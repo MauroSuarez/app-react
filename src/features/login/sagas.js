@@ -1,8 +1,5 @@
-import { call,put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery } from "redux-saga/effects";
 import { ActionsTypes, Actions } from "./actions";
-import {
-  getUser
-} from "../../api/LoginService";
 
 function* loginWorker(action) {
   try {
@@ -14,15 +11,6 @@ function* loginWorker(action) {
     if (data.username === "admin" && data.password === "admin") {
       yield put(Actions.loginSuccess(data));
     } else {
-      
-      const user = yield call(getUser,data)
-      if(user.length !== 0){
-        yield put(Actions.loginSuccess(user));
-      }else{
-        yield put(
-          Actions.loginError("El usuario y/o la contraseña no coinciden")
-        );
-      }
       
     }
   } catch (e) {

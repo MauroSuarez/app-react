@@ -1,13 +1,13 @@
 import { Layout } from 'antd';
 import React from "react";
-import './style.css';
+import './styles.css';
 
 const { Header } = Layout;
 
 class HeaderBar extends React.Component {
   render() {
     return (
-      <Header className="header">
+      <Header>
         <div className="logo" />
         {this.props.children}
       </Header>
